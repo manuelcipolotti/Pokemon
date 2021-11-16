@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Pokemon
+
+  Created by Cipolotti, Manuel on 15/11/21.
+  
+*/
+
+"stats" = "Stats";
+
+"stats.name" = "Nome";
+"stats.base" = "Base";
+"stats.effort" = "Costo";
+
+"types" = "Categoria";
+
+"types.name" = "Nome";
+"types.slot" = "Slot";
+
