@@ -35,6 +35,7 @@ struct Types: Codable {
 }
 
 struct PokemonDetail: Codable {
+    var id: Int
     var name: String
     var species: APIResource?
     var sprites: Sprites?

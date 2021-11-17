@@ -28,23 +28,35 @@ class PokemonViewModel: NSObject {
                     self.offset = Utilities.getQueryIntParameter(url: result?.next, param: "offset")
                     let group = DispatchGroup()
                     var pokemonList: [PokemonItemList] = []
+                    var errorList: String = ""
                     for pokemon in pokeList.results {
                         group.enter()
                         PokemonAPI.shared.getAPIResource(for:PokemonDetail.self,
                                                             apiResource: pokemon,
                                                             completion: { pokeResource, error in
                             group.leave()
-                            if let pokeResource = pokeResource as? PokemonDetail,
-                              let imagePath = pokeResource.sprites?.front_default {
-                                pokemonList.append(PokemonItemList.init(name: pokeResource.name,
-                                                                        apiRef: pokemon,
-                                                                        imagePath: imagePath))
+                            if let error = error {
+                                errorList.append("\n\(error)")
+                            } else {
+                                if let pokeResource = pokeResource as? PokemonDetail,
+                                  let imagePath = pokeResource.sprites?.front_default {
+                                    pokemonList.append(PokemonItemList.init(name: pokeResource.name,
+                                                                            id: pokeResource.id,
+                                                                            apiRef: pokemon,
+                                                                            imagePath: imagePath))
+                                }
                             }
                         })
                         
                     }
                     group.notify(queue: .main, execute: {
+                        
+                        if !errorList.isEmpty {
+                            self.error.value = errorList
+                        }
+
                         self.pokemonList.append(contentsOf: pokemonList)
+                        self.pokemonList.sort(by: {$0.id < $1.id})
                         self.refresh.value = true
                     })
                     

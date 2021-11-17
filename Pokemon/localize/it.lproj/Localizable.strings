@@ -6,6 +6,8 @@
   
 */
 
+"detail" = "Scheda";
+
 "stats" = "Stats";
 
 "stats.name" = "Nome";

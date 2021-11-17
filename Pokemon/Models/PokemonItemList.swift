@@ -9,6 +9,7 @@ import Foundation
 
 struct PokemonItemList {
     var name: String
+    var id: Int
     var apiRef: APIResource
     var imagePath: String
     

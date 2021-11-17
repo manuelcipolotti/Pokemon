@@ -49,12 +49,8 @@ class StatsView: UIView, ViewsDelegate {
         
         self.stackView.backgroundColor = .white
         self.stackView.addArrangedSubview(row)
-        self.stackView.addArrangedSubview(labelName)
         self.stackView.addArrangedSubview(labelNameValue)
-        self.stackView.addArrangedSubview(labelBase)
-        self.stackView.addArrangedSubview(labelBaseValue)
-        self.stackView.addArrangedSubview(labelEffort)
-        self.stackView.addArrangedSubview(labelEffortValue)
+//        self.stackView.addArrangedSubview(labelBaseValue)
         self.addSubview(self.stackView)
         self.stackView.anchor(top: self.topAnchor, paddingTop: 8,
                               bottom: self.bottomAnchor, paddingBottom: -8,
@@ -84,7 +80,7 @@ class StatsView: UIView, ViewsDelegate {
         
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-            self.heightAnchor.constraint(equalToConstant: 180)
+            self.heightAnchor.constraint(equalToConstant: 50)
         ])
         NSLayoutConstraint.activate([
             row.heightAnchor.constraint(equalToConstant: 2)
@@ -93,23 +89,23 @@ class StatsView: UIView, ViewsDelegate {
         NSLayoutConstraint.activate([
             labelName.heightAnchor.constraint(equalToConstant: 20)
         ])
-        NSLayoutConstraint.activate([
-            labelNameValue.heightAnchor.constraint(equalToConstant: 30)
-        ])
-
-        NSLayoutConstraint.activate([
-            labelBase.heightAnchor.constraint(equalToConstant: 20)
-        ])
-        NSLayoutConstraint.activate([
-            labelBaseValue.heightAnchor.constraint(equalToConstant: 30)
-        ])
-
-        NSLayoutConstraint.activate([
-            labelEffort.heightAnchor.constraint(equalToConstant: 20)
-        ])
-        NSLayoutConstraint.activate([
-            labelEffortValue.heightAnchor.constraint(equalToConstant: 30)
-        ])
+//        NSLayoutConstraint.activate([
+//            labelNameValue.heightAnchor.constraint(equalToConstant: 30)
+//        ])
+//
+//        NSLayoutConstraint.activate([
+//            labelBase.heightAnchor.constraint(equalToConstant: 20)
+//        ])
+//        NSLayoutConstraint.activate([
+//            labelBaseValue.heightAnchor.constraint(equalToConstant: 30)
+//        ])
+//
+//        NSLayoutConstraint.activate([
+//            labelEffort.heightAnchor.constraint(equalToConstant: 20)
+//        ])
+//        NSLayoutConstraint.activate([
+//            labelEffortValue.heightAnchor.constraint(equalToConstant: 30)
+//        ])
 
     }
 

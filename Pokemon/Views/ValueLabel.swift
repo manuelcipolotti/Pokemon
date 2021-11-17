@@ -7,14 +7,14 @@
 
 import UIKit
 
-class ValueLabel: UILabel {
+class ValueLabel: UILabel, ViewsDelegate {
 
     init() {
         super.init(frame: CGRect.init())
         if UIDevice.current.userInterfaceIdiom == .phone {
-            self.font = UIFont.boldSystemFont(ofSize: 16)
+            self.font = UIFont.boldSystemFont(ofSize: 28)
         } else {
-            self.font = UIFont.boldSystemFont(ofSize: 18)
+            self.font = UIFont.boldSystemFont(ofSize: 36)
         }
         self.backgroundColor = .white
 
@@ -22,6 +22,15 @@ class ValueLabel: UILabel {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - ViewsDelegate
+    func setConstraints() {
+        NSLayoutConstraint.activate([
+            self.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+            self.heightAnchor.constraint(equalToConstant: 50)
+        ])
+
     }
     
 }

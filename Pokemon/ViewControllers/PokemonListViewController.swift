@@ -109,7 +109,7 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource,
             }
         })
         print("max row = \(maxRow)")
-        if (maxRow >= self.viewModel.getPokemoListSize() - 2) {
+        if (maxRow >= self.viewModel.getPokemoListSize() - 1) {
             print("load")
             viewModel.fetchPokemonList()
         }

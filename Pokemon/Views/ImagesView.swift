@@ -14,7 +14,7 @@ class ImagesView: UIView , ViewsDelegate {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fill
         stackView.spacing = 2
         stackView.translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
@@ -53,6 +53,7 @@ class ImagesView: UIView , ViewsDelegate {
         
         images.forEach({ imagePath in
             let uiImage: UIImageView = UIImageView.init()
+            uiImage.contentMode = .scaleAspectFit
             uiImage.sd_setImage(with: URL.init(string: imagePath))
             self.stackView.addArrangedSubview(uiImage)
             NSLayoutConstraint.activate([

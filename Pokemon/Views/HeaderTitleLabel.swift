@@ -14,9 +14,9 @@ class HeaderTitleLabel: UILabel {
         super.init(frame: CGRect.init())
         self.text = title
         if UIDevice.current.userInterfaceIdiom == .phone {
-            self.font = UIFont.boldSystemFont(ofSize: 18)
+            self.font = UIFont.boldSystemFont(ofSize: 28)
         } else {
-            self.font = UIFont.boldSystemFont(ofSize: 22)
+            self.font = UIFont.boldSystemFont(ofSize: 36)
         }
         self.backgroundColor = .white
 

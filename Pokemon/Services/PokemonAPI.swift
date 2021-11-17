@@ -69,7 +69,7 @@ class PokemonAPI: NSObject {
                       completion(decodedResponse, nil)
 
                   } catch {
-                      completion(nil, error.localizedDescription)
+                      completion(nil, "getPokemon: Errore in conversione dati")
                   }
               }
             }

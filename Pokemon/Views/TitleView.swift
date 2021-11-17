@@ -38,7 +38,7 @@ class TitleView: UIView, ViewsDelegate {
     func setConstraints() {
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-            self.heightAnchor.constraint(equalToConstant: 50)
+            self.heightAnchor.constraint(equalToConstant: 60)
         ])
 
     }

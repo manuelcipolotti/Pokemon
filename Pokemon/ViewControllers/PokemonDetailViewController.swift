@@ -100,9 +100,12 @@ class PokemonDetailViewController: UIViewController {
         viewModel.refresh.bind(listener: {[weak self] isRefresh in
             if let isRefresh = isRefresh, isRefresh {
                 DispatchQueue.main.async {
-                    self?.title = self?.viewModel.getName()
+                    self?.title = LanguageManager.localize("detail")
                     self?.stackView.subviews.forEach({$0.removeFromSuperview()})
-
+                    if let name = self?.viewModel.getName() {
+                        let nameTitleView = TitleView.init(title: name)
+                        self?.stackView.addArrangedSubview(nameTitleView)
+                    }
                     if let images = self?.viewModel.getImages() {
                         let imagesVies = ImagesView.init()
                         imagesVies.set(images: images)
@@ -115,6 +118,9 @@ class PokemonDetailViewController: UIViewController {
                         let view = StatsView.init()
                         view.set(stat: stat)
                         self?.stackView.addArrangedSubview(view)
+                        let viewBar = StatBarView.init()
+                        viewBar.set(stat: stat)
+                        self?.stackView.addArrangedSubview(viewBar)
                     })
                     
                     let typeTitleView = TitleView.init(title: LanguageManager.localize("types"))

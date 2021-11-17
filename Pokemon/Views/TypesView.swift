@@ -12,7 +12,7 @@ class TypesView: UIView , ViewsDelegate {
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .fill
         stackView.spacing = 2
@@ -23,10 +23,8 @@ class TypesView: UIView , ViewsDelegate {
 
     
     let labelNameValue = ValueLabel.init()
-    let labelSlotValue = ValueLabel.init()
+    let imageView: UIImageView = UIImageView.init()
 
-    let labelName: TitleLabel = TitleLabel.init(title: LanguageManager.localize("stats.name"))
-    let labelSlot: TitleLabel = TitleLabel.init(title: LanguageManager.localize("stats.base"))
     let row: UIView = {
         let view = UIView.init()
         view.backgroundColor = .lightGray
@@ -46,11 +44,8 @@ class TypesView: UIView , ViewsDelegate {
         // Drawing code
         self.backgroundColor = .white
         self.stackView.backgroundColor = .white
-        self.stackView.addArrangedSubview(row)
-        self.stackView.addArrangedSubview(labelName)
         self.stackView.addArrangedSubview(labelNameValue)
-        self.stackView.addArrangedSubview(labelSlot)
-        self.stackView.addArrangedSubview(labelSlotValue)
+        self.stackView.addArrangedSubview(imageView)
         self.addSubview(self.stackView)
         self.stackView.anchor(top: self.topAnchor, paddingTop: 8,
                               bottom: self.bottomAnchor, paddingBottom: -8,
@@ -62,7 +57,9 @@ class TypesView: UIView , ViewsDelegate {
     
     func set(type: PokemonItemDetailTypes) {
         self.labelNameValue.text = type.name
-        self.labelSlotValue.text = "\(type.slot)"
+        if let image = UIImage.init(named: "\(type.name)_Type_Icon") {
+            self.imageView.image = image
+        }
     }
     
     func setConstraints() {
@@ -74,17 +71,12 @@ class TypesView: UIView , ViewsDelegate {
         ])
 
         NSLayoutConstraint.activate([
-            labelName.heightAnchor.constraint(equalToConstant: 20)
-        ])
-        NSLayoutConstraint.activate([
             labelNameValue.heightAnchor.constraint(equalToConstant: 30)
         ])
 
         NSLayoutConstraint.activate([
-            labelSlot.heightAnchor.constraint(equalToConstant: 20)
-        ])
-        NSLayoutConstraint.activate([
-            labelSlotValue.heightAnchor.constraint(equalToConstant: 30)
+            imageView.widthAnchor.constraint(equalToConstant: 94),
+            imageView.heightAnchor.constraint(equalToConstant: 60)
         ])
 
 
